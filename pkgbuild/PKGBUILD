@@ -1,6 +1,6 @@
 # Maintainer: Barnabé <barnabedikartola@gmail.com>
 
-pkgname=neofetch
+pkgname=biglinux-neofetch
 pkgver=$(date +%y.%m.%d)
 pkgrel=$(date +%H%M)
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
