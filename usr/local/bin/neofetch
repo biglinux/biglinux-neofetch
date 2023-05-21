@@ -53,39 +53,35 @@ read -rd '' config <<'EOF'
 # See this wiki page for more info:
 # https://github.com/dylanaraps/neofetch/wiki/Customizing-Info
 print_info() {
-    info title
-    info underline
-
-    info "OS" distro
-    info "Host" model
-    info "Kernel" kernel
-    info "Uptime" uptime
-    info "Packages" packages
-    info "Shell" shell
-    info "Resolution" resolution
-    info "DE" de
-    info "WM" wm
-    info "WM Theme" wm_theme
-    info "Theme" theme
-    info "Icons" icons
-    info "Terminal" term
-    info "Terminal Font" term_font
-    info "CPU" cpu
-    info "GPU" gpu
-    info "Memory" memory
-
-    # info "GPU Driver" gpu_driver  # Linux/macOS only
-    # info "Disk" disk
-    # info "Battery" battery
-    # info "Font" font
-    # info "Song" song
-    # [[ "$player" ]] && prin "Music Player" "$player"
-    # info "Local IP" local_ip
-    # info "Public IP" public_ip
-    # info "Users" users
-    # info "Locale" locale  # This only works on glibc systems.
-
-    info cols
+    info "${c7} -USER " title
+    info host
+    echo
+    info "${c1} -OS " os
+    info "${c1} ┌ Distro " distro
+    info "${c1} ├ Kernel " kernel
+    info "${c1} ├ Packages " packages
+    info "${c1} └ Shell " shell
+    echo
+    info "${c2} -Development Environment " de
+    info "${c2} ┌ WM " wm
+    info "${c2} ├ Theme " wmtheme
+    info "${c2} ├ -Theme " theme
+    info "${c2} ├ -Icons " icons
+    info "${c2} ├ -Terminal " term
+    info "${c2} └ -Terminal Font " term_font
+    info "${c2} ┌↯ -Song " song
+     [[ "$player" ]] && prin "${c2} └➤ -MP " "$player"
+    echo
+    info "${c3} -Laptop" model
+    info "${c3} ┌ -CPU " cpu
+    info "${c3} ├ -GPU " gpu
+    info "${c3} ├ -Memory " memory
+    info "${c3} ├ -Uptime " uptime
+    info "${c3} └ -Resolution " resolution
+    echo
+    prin "[\n $(color 1) \n \n $(color 2) \n \n $(color 3) \n \n $(color 4)  \n \n $(color 5)  \n \n $(color 6)  \n \n $(color 7)  \n \n $(color 0) \n$(color 15) ]"
+   # info cols
+   # info "Fuente. Terminal" term_font
 }
 
 # Title
@@ -4674,25 +4670,28 @@ get_distro_ascii() {
         "BigLinux"*)
             set_colors 6 11 4
             read -rd '' ascii_data <<'EOF'        
-${c1}                                 ...
-                              :OWMMMNd.
-                            :NMMMMMMMMWc
-                  okkl.    kMMMMMW0xdOWMl
-  :             xMMMMMW.  kMMMMNc      lW.
- :x             NMMMMMO  ,MMMM0.        'l
- Xx              "lkk"   kMMMX      .okx,
-${c2}.MX      .cc;.    .xXKx. KMMM:    .OMMMMMl
-:MM'   'KMMMMWK:  0MMMMk xMMM.   lWMMMMMMM'
-cMMN:;xMMMMk::MMO oMMMMX .XMM. .KMMMWOOMMMd
-'MMMMMMMMN,   NMMx OMMMMl .kM0OMMMMk.  ;MMd
- xMMMMMMd    .MMMW  :NMMMd  .ckKKx'     KMc
-  dWMNd.     oMMMN    lkNMX,            oM.
- ;.         ;MMMMx      "MM:.           cO
-${c3} .X.       oMMMMW.                      l.
-  dMk:..;xWMMMMW,
-   kMMMMMMMMMMX.
-    :XMMMMMMK:
-      ':MM:"
+${c3}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${c3}⢀⣨⣪⣺⣿⣿⣿⣿⣻⣺⣈⡀⠀⠀⠀⠀⠀⠀ 
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${c3}⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣸⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${c2}⣀⣨⣨⣨⣨⣀${c3}⠀⠀⠀⠀⠀${c3}⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⣿⣿⣿⣻⡀⠀⠀⠀
+${c3}⠀⠀⠀${c1}⢀⡘${c3}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${c2}⣠⣾⣿⣿⣿⣿⣿⣿⣻${c3}⠀⠀⠀${c3}⢀⣾⣿⣿⣿⣿⣿⣿⣿⠟⠕⠁⠀⠀⠀⠀⠄⠷⣿⣹⠀⠀⠀
+${c3}⠀⠀${c1}⢀⣾⡙${c3}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${c2}⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁${c3}⠀⠀${c3}⣦⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⢷⡘⠀⠀
+${c3}⠀⠀${c1}⣮⣿⡙${c3}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${c2}⠇⠿⣿⣿⣿⣿⠿⠗⠁${c3}⠀⠀⠀${c3}⣿⣿⣿⣿⣿⣿⠝⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣈⣀⠀⠑⠀⠀
+${c3}⠀${c1}⢀⣿⣿⡙${c3}⠀⠀⠀⠀⠀⠀⠀⠀⠀${c1}⢀⣀⡀${c3}⠀⠀⠀⠀⠀⠀⠀${c2}⢀⣠⣪⣺⣨⣈${c3}⠀⠀${c3}⢠⣿⣿⣿⣿⣿⡝⠀⠀⠀⠀⠀⠀⢀⣪⣾⣿⣿⣿⣿⣻⣈⠀⠀
+${c3}⠀${c1}⢦⣿⣿⣿${c3}⠀⠀⠀⠀⠀⠀${c1}⢀⣪⣿⣿⣿⣿⣿⣺⣈⡀${c3}⠀⠀${c2}⢀⣾⣿⣿⣿⣿⣿⣹${c3}⠀⠀${c3}⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⢀⣪⣿⣿⣿⣿⣿⣿⣿⣿⣿⣘⠀
+${c3}⠀${c1}⢦⣿⣿⣿⣙${c3}⠀⠀⠀${c1}⣀⣪⣿⣿⣿⣿⣿⠟⠕⢿⣿⣿⣸${c3}⠀${c2}⠆⣿⣿⣿⣿⣿⣿⣿${c3}⠀⠀${c3}⠧⣿⣿⣿⣿⠀⠀⠀⢀⣪⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀
+${c3}⠀${c1}⢦⣿⣿⣿⣿⣿⣺⣿⣿⣿⣿⣿⣿⠟⠁${c3}⠀⠀${c1}⢦⣿⣿⣿⣹${c3}⠀${c2}⠧⣿⣿⣿⣿⣿⣿⣙${c3}⠀⠀${c3}⠧⣿⣿⣿⡈⣀⣪⣿⣿⣿⣿⣿⠟⠕⠁⠄⠇⣿⣿⣿⣿⠀
+${c3}⠀${c1}⠆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁${c3}⠀⠀⠀⠀${c1}⢦⣿⣿⣿⣿⡙${c3}⠀${c2}⠇⢿⣿⣿⣿⣿⣿⣸${c3}⠀⠀${c3}⠄⠗⢿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⢧⣿⣿⣿⠀
+${c3}⠀⠀${c1}⠆⢿⣿⣿⣿⣿⣿⣿⠟⠁${c3}⠀⠀⠀⠀⠀⠀${c1}⣿⣿⣿⣿⣿⡻${c3}⠀⠀⠀${c2}⠇⠿⣿⣿⣿⣿⣻⣈${c3}⠀⠀⠀${c3}⠄⠅⠗⠗⠅⠀⠀⠀⠀⠀⠀⠀⠀⠆⣿⣿⡟⠀
+${c3}⠀⠀⠀${c1}⡀⠇⠗⠿⠗⠕${c3}⠀⠀⠀⠀⠀⠀⠀⠀${c1}⣮⣿⣿⣿⣿⣿⡙${c3}⠀⠀⠀⠀⠀⠀${c2}⠅⠗⠷⠿⢿⣻⣈${c3}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${c3}⣿⣿⠙⠀
+${c3}⠀⠀⠀${c1}⣻⡀${c3}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${c1}⢀⣮⣿⣿⣿⣿⣿⣿⠑${c3}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${c3}⣿⡟⠀⠀
+${c3}⠀⠀⠀${c1}⠦⣿⣸⡀${c3}⠀⠀⠀⠀⠀⠀${c1}⣀⣪⣿⣿⣿⣿⣿⣿⣿⡟${c3} ⠀   ${c1}          ${c2} ${c1}          ${c3}   ${c3}⡟⠀⠀⠀
+${c3}⠀⠀⠀⠀${c1}⢷⣿⣿⣺⣸⣨⣪⣺⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟${c3}⠀⠀    ${c1}       ${c2}       ${c1}       ${c3}       
+${c3}⠀⠀⠀⠀⠀${c1}⠧⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠕${c3}⠀⠀⠀    ${c1}    ${c2}     ${c3}   ${c2}     ${c1}    ${c3}       
+${c3}⠀⠀⠀⠀⠀⠀${c1}⠄⠗⢿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠅${c3}⠀⠀⠀⠀⠀    ${c1}  ${c2}      ${c3}     ${c2}      ${c1}  ${c3}       
+${c3}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${c1}⠅⠅⠅⠅⠁${c3}⠀⠀⠀⠀⠀⠀⠀⠀⠀    ${c1}    ${c2}     ${c3}   ${c2}     ${c1}    ${c3}       
+${c3}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀       ⠀⠀⠀⠀⠀⠀ ⠀   ${c1}       ${c2}       ${c1}       ${c3}       
+${c3}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀       ⠀⠀⠀⠀⠀⠀ ⠀   ${c1}          ${c2} ${c1}          ${c1}${c3}       
+${c3}   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀       ⠀⠀⠀⠀⠀⠀ ⠀   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀       ⠀⠀⠀⠀⠀⠀ ⠀     
 EOF
         ;;
     
