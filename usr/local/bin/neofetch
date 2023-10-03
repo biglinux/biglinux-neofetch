@@ -1968,9 +1968,9 @@ get_memory() {
             done < /proc/meminfo
 
             if [[ $mem_avail ]]; then
-                mem_used="$(($(free -m | awk 'NR==2{print $3}') - $(free -m | awk 'NR==2{print $6}') ))"
-                else
-                mem_used="$(($(free -m | awk 'NR==2{print $3}') - $(free -m | awk 'NR==2{print $6}') ))"
+                mem_used="$(free -m | awk 'NR==2{print $3}')"
+            else
+                mem_used="$(free -m | awk 'NR==2{print $3}')"
             fi
 
             mem_total="$(free -m | awk 'NR==2{print $2}')"
